@@ -13,6 +13,14 @@ It implements:
 
 **Not implemented:** direct Base44 app integration, Instagram login/publishing, scheduled publishing, analytics ingestion, automatic token renewal, App Review, or a hosted deployment. The phase-1 app stores Page tokens but has no posting API or frontend feature. Client onboarding beyond Meta test roles requires Meta approval and additional testing.
 
+## If using GitHub + Cloudflare automatic deploy (important)
+
+This archive has **NO extra parent folder inside the ZIP**. **Extract it first** and upload its contents, including the `src`, `migrations`, and `tests` directories, into the *repository root*. GitHub does not unpack a ZIP uploaded as a file. Before deploying, confirm `src/index.js` is visible in the repository at `/blob/main/src/index.js`.
+
+**Do not delete the GitHub repository itself** if it is already connected to Cloudflare. Replace incomplete repository files instead. Do not delete an existing D1 database without verifying that it contains no valuable data.
+
+The Cloudflare Git deploy root is `/`; build command is blank; deploy command is `npx wrangler deploy`. Deployment still needs a **real D1 database ID** in `wrangler.toml`, applied schema migrations, configured secrets, a deployed Worker origin, and a Cloudflare Access policy. The `REPLACE_WITH_ID` text is a placeholder and cannot be deployed. See the full setup below.
+
 ## Requirements
 
 - Node.js 20+ and npm.

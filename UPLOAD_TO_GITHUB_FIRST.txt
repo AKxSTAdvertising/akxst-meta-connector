@@ -1,0 +1,45 @@
+AKxST META CONNECTOR - COMPLETE GITHUB SOURCE PACKAGE
+==================================================
+
+IMPORTANT: ZIP ko as-it-is GitHub par upload NA karein.
+GitHub/Cloudflare ZIP file ke andar ka source automatically unpack NAHI karte.
+
+1) ZIP ko laptop mein Extract All karein.
+2) Apni existing GitHub repository kholo:
+   https://github.com/AKxSTAdvertising/akxst-meta-connector
+3) REPOSITORY DELETE MAT KARNA — Cloudflare connection toot sakta hai.
+   Purani incomplete files replace kar sakte ho.
+4) GitHub: Add file > Upload files. Extracted folder KE ANDAR ka
+   saara content drag/drop karo, INCLUDING folders src/, migrations/, tests/.
+   Ensure paths are preserved (not just their inner files):
+       src/index.js
+       migrations/0001_create_tables.sql
+       tests/connector.test.js
+       wrangler.toml
+       package.json
+       README.md
+       .gitignore
+5) 'Commit changes' press karo.
+6) Verify this exact page exists in GitHub before deploying:
+   https://github.com/AKxSTAdvertising/akxst-meta-connector/blob/main/src/index.js
+
+CLOUDFLARE DEPLOYMENT SETTINGS
+------------------------------
+Root directory: / (repository root)
+Build command: [blank]
+Deploy command: npx wrangler deploy
+Production branch: main
+
+IMPORTANT NEXT BLOCKER: wrangler.toml has database_id = "REPLACE_WITH_ID".
+This is deliberate, NOT a real D1 database ID. Create Cloudflare D1 database
+named akxst-meta-db, get actual ID, replace it in wrangler.toml and commit.
+Apply migrations using Wrangler as instructed in README.md.
+
+Never commit Meta App Secret, access tokens, encryption keys, .env or .dev.vars.
+Live Redirect URL is only known after Worker deployment and PUBLIC_BASE_URL setup:
+  https://<your-real-worker-hostname>/auth/meta/callback
+The example above is NOT a usable URL. Protect the Worker with Cloudflare Access.
+
+This is a starter Meta OAuth connector, not an already-deployed service,
+and not yet integrated with Base44. Do not use for real client accounts
+until cloud authentication and tenant isolation have been tested.
