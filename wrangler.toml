@@ -1,0 +1,15 @@
+name = "akxst-meta-connector"
+main = "src/index.js"
+compatibility_date = "2026-10-01"
+workers_dev = true
+
+[vars]
+META_APP_ID = "3704754689693350"
+META_API_VERSION = "v27.0"
+
+# Replace REPLACE_WITH_ID after running: npx wrangler d1 create akxst-meta-db
+[[d1_databases]]
+binding = "DB"
+database_name = "akxst-meta-db"
+database_id = "REPLACE_WITH_ID"
+migrations_dir = "migrations"
