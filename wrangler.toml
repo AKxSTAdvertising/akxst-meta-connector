@@ -6,6 +6,7 @@ workers_dev = true
 [vars]
 META_APP_ID = "3704754689693350"
 META_API_VERSION = "v27.0"
+PUBLIC_BASE_URL = "https://akxst-meta-connector.itsshailesh0414.workers.dev"
 
 [[d1_databases]]
 binding = "DB"
