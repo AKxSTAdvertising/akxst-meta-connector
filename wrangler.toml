@@ -7,9 +7,8 @@ workers_dev = true
 META_APP_ID = "3704754689693350"
 META_API_VERSION = "v27.0"
 
-# Replace REPLACE_WITH_ID after running: npx wrangler d1 create akxst-meta-db
 [[d1_databases]]
 binding = "DB"
 database_name = "akxst-meta-db"
-database_id = "REPLACE_WITH_ID"
+database_id = "7d31b6a8-d015-4f24-9256-174d8dfc18a8"
 migrations_dir = "migrations"
